@@ -93,15 +93,17 @@ body {
   border-color: #2861e8;
   outline: 3px solid rgb(40 97 232 / 15%);
 }
-.btn{
+
+.btn {
   min-height: 34px;
   padding: 6px;
   border-radius: 5px;
   color: white;
   border: none;
   background-color: #2861e8;
-   cursor: pointer;
+  cursor: pointer;
 }
+
 .Cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -148,8 +150,8 @@ body {
   gap: 10px;
 }
 
-.favorite-section > h2,
-.all-contacts > h2 {
+.favorite-section>h2,
+.all-contacts>h2 {
   font-size: 0.875rem;
 }
 
@@ -173,9 +175,11 @@ body {
   flex: 1;
   gap: 4px;
 }
-.Carditem h2{
+
+.Carditem h2 {
   font-weight: 800;
 }
+
 .favorite-card {
   border-color: #ffd471;
   background: #fffdf6;
@@ -218,7 +222,7 @@ body {
   font-weight: 600;
 }
 
-.Carditem > div {
+.Carditem>div {
   display: flex;
   gap: 6px;
   margin-top: 2px;
@@ -239,7 +243,7 @@ body {
   font-size: 0.625rem;
 }
 
-.Card button + button {
+.Card button+button {
   background: #fff0f0;
   color: #eb040c;
   font-weight: 700;
@@ -266,6 +270,7 @@ body {
   color: white;
   font-size: 0.6875rem;
 }
+
 @media (max-width: 700px) {
   .Home {
     grid-template-columns: 1fr;
