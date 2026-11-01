@@ -1,5 +1,5 @@
-import React from 'react'
-import { Search, PhoneIcon, Mail, Star, Pencil, Trash } from 'lucide-react';
+
+import { Search, PhoneIcon, Mail,Pencil, Trash } from 'lucide-react';
 
 function ContactCard({ item, favorite = false }) {
     return (
@@ -11,7 +11,7 @@ function ContactCard({ item, favorite = false }) {
                 <h2>{item.name}</h2>
                 <p><PhoneIcon size={10} /> {item.Phone}</p>
                 <p><Mail size={10} /> {item.Email}</p>
-                <p>{item.Group}</p>
+                <p className="group" style ={{backgroundColor:item.color,color:'white'}}>{item.Group}</p>
                 <div>
                     <button><Pencil size={10} /> Edit</button>
                     <button><Trash size={10} /> Delete</button>
