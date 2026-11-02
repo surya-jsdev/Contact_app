@@ -31,7 +31,7 @@
       "Phone": "+91 6369824770",
       "Email": "gayathari@gmail.com",
       "Group": "Friends",
-      "color": "#c71585"
+      "color": "#064df3"
    },
    {
       "id": 5,
