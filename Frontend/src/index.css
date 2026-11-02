@@ -129,6 +129,43 @@ body {
   color: #78859a;
 }
 
+.search-container {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid #d6deeb;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgb(23 36 59 / 12%);
+}
+
+.search-result {
+  padding: 9px 12px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.search-result:last-child {
+  border-bottom: 0;
+}
+
+.search-result h3 {
+  font-size: 0.875rem;
+}
+
+.search-result p {
+  margin-top: 3px;
+  color: #59677d;
+  font-size: 0.75rem;
+}
+
 .contact-search input {
   width: 100%;
   border: 0;
@@ -157,7 +194,7 @@ body {
 
 .Card {
   display: flex;
-  min-width: 0;
+  width: 380px;
   align-items: flex-start;
   gap: 10px;
   padding: 12px;
@@ -165,12 +202,11 @@ body {
   border-radius: 9px;
   background: #fff;
   box-shadow: 0 1px 3px rgb(23 36 59 / 3%);
-  overflow-wrap: anywhere;
 }
 
 .Carditem {
   display: flex;
-  min-width: 0;
+  width: 300px;
   flex-direction: column;
   flex: 1;
   gap: 4px;
@@ -191,18 +227,6 @@ body {
   justify-content: space-between;
   gap: 8px;
   font-size: 0.8125rem;
-}
-
-.Card h2::after {
-  flex: 0 0 auto;
-  color: #17243b;
-  content: "☆";
-  font-size: 1rem;
-}
-
-.favorite-card h2::after {
-  color: #ffc928;
-  content: "★";
 }
 
 .Card p {
@@ -243,10 +267,20 @@ body {
   font-size: 0.625rem;
 }
 
-.Card button+button {
+.Card .delete-contact {
   background: #fff0f0;
   color: #eb040c;
   font-weight: 700;
+}
+
+.Card .favorite-toggle {
+  background: #fff8df;
+  color: #9a6b00;
+}
+
+.favorite-card .favorite-toggle {
+  background: #ffe9a8;
+  color: #805900;
 }
 
 .Card button:hover {

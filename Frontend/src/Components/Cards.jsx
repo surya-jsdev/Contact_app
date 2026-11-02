@@ -1,9 +1,9 @@
+import { PhoneIcon, Mail, Pencil, Star, Trash } from 'lucide-react';
+import SearchBar from './SearchBar';
 
-import { Search, PhoneIcon, Mail,Pencil, Trash } from 'lucide-react';
-
-function ContactCard({ item, favorite = false }) {
+function ContactCard({ item, handleDelete, handleEdit, handleToggleFavorite }) {
     return (
-        <div key={item.id} className={`Card${favorite ? ' favorite-card' : ''}`}>
+        <div className={`Card${item.isFavorite ? ' favorite-card' : ''}`}>
             <div className='avatar' style={{ backgroundColor: item.color }}>
                 <p>{item.name.slice(0, 2).toUpperCase()}</p>
             </div>
@@ -13,34 +13,46 @@ function ContactCard({ item, favorite = false }) {
                 <p><Mail size={10} /> {item.Email}</p>
                 <p className="group" style ={{backgroundColor:item.color,color:'white'}}>{item.Group}</p>
                 <div>
-                    <button><Pencil size={10} /> Edit</button>
-                    <button><Trash size={10} /> Delete</button>
+
+                    <button onClick={() => handleEdit(item)}><Pencil size={10} /> Edit</button>
+                    <button className='delete-contact' onClick={() => handleDelete(item.id)}><Trash size={10} /> Delete</button>
                 </div>
+
             </div>
+                    <div>
+                    <button
+                        className='favorite-toggle'
+                        type='button'
+                        onClick={() => handleToggleFavorite(item.id)}
+                    >
+                        <Star size={10} fill={item.isFavorite ? 'currentColor' : 'none'} />
+
+                    </button>
+                </div>
         </div>
     )
 }
 
-function Cards({ Data }) {
+function Cards({ Data, handleDelete, handleEdit, handleToggleFavorite }) {
+    const favoriteContacts = Data.filter((contact) => contact.isFavorite)
+    const otherContacts = Data.filter((contact) => !contact.isFavorite)
+
     return (
         <div className='contact-list'>
-            <div className='contact-search'>
-                <span><Search size={16} /></span>
-                <input type='search' placeholder='Search by name or phone' />
-            </div>
+           <SearchBar contacts={Data}/>
             <section className='favorite-section'>
                 <h2>⭐ Favourites</h2>
                 <div className='Cards'>
-                    {Data.slice(0, 2).map((item) => (
-                        <ContactCard key={item.id} item={item} favorite />
+                    {favoriteContacts.map((item) => (
+                        <ContactCard key={item.id} item={item} handleDelete={handleDelete} handleEdit={handleEdit} handleToggleFavorite={handleToggleFavorite} />
                     ))}
                 </div>
             </section>
             <section className='all-contacts'>
                 <h2>All contacts</h2>
                 <div className='Cards'>
-                    {Data.slice(2, 7).map((item) => (
-                        <ContactCard key={item.id} item={item} />
+                    {otherContacts.map((item) => (
+                        <ContactCard key={item.id} item={item} handleDelete={handleDelete} handleEdit={handleEdit} handleToggleFavorite={handleToggleFavorite} />
                     ))}
                 </div>
             </section>

@@ -1,0 +1,39 @@
+import { useState } from 'react'
+import { Search } from 'lucide-react'
+
+function SearchBar({ contacts }) {
+
+  const [search, setSearch] = useState('')
+
+  const searchValue = search.toLowerCase() ? contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(search) ||
+        contact.Phone.toLowerCase().includes(search)
+      ): null
+  
+
+  return (
+    <div className='search-container'>
+      <div className='contact-search'>
+        <span><Search size={16} /></span>
+        <input
+          type='search'
+          placeholder='Search by name or phone'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+      {search && (
+        <div className='search-results'>
+          {searchValue.length > 0 ? searchValue.map((contact) => (
+            <div className='search-result' key={contact.id}>
+              <h3>{contact.name}</h3>
+              <p>{contact.Phone}</p>
+            </div>
+          )) : <p className='search-result'>No contacts found.</p>}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default SearchBar

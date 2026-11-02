@@ -1,4 +1,6 @@
-[
+
+
+ const Contacts=[
    {
       "id": 1,
       "name": "Amma",
@@ -55,4 +57,7 @@
       "Group": "Friends",
       "color": "#064df3"
    }
-]
+];
+
+
+export default Contacts
