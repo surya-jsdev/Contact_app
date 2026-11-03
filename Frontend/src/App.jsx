@@ -8,7 +8,7 @@ import SearchBar from "./Components/SearchBar";
 function App() {
   const [contacts, setContacts] = useState([]);
   const [editingContact, setEditingContact] = useState(null);
-  const [successmessage, setSuccessMessage] = useState('')
+  const [successmessage, setSuccessMessage] = useState("")
   const [error, setError] = useState("");
   const favoriteContacts = contacts.filter((contact) => contact.isFavorite === true || contact.isFavorite === "true");
   const otherContacts = contacts.filter((contact) => contact.isFavorite !== true && contact.isFavorite !== "true");
@@ -26,7 +26,8 @@ function App() {
     const newContact = await addContact(contact);
     setContacts((currentContacts) => [...currentContacts, newContact]);
     setSuccessMessage("Contact Added SuccessFully");
-      setError("");
+    setTimeout(() => setSuccessMessage(""), 2000);
+    setError("");
   };
 
   const handleUpdateContact = async (id, contact) => {
@@ -83,7 +84,7 @@ function App() {
           {error && <p role="alert">{error}</p>}
           {favoriteContacts.length > 0 && (
             <section className="favorite-section">
-              <h2><i class="fa-solid fa-star"></i> Favourites</h2>
+              <h2><i className="fa-solid fa-star"></i> Favourites</h2>
               <ConatactCard
                 contacts={favoriteContacts}
                 onEdit={setEditingContact}

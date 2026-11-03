@@ -65,6 +65,15 @@
       "Group": "Friends",
       "color": "#064df3",
       "isFavorite": false
+    },
+    {
+      "name": "surya",
+      "phone": "6369824770",
+      "email": "surya@gmail.com",
+      "group": "Family",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "i-9_2B-pagA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
