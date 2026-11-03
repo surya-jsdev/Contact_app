@@ -14,7 +14,7 @@ function ConatactCard({ contacts, Edit, Deletecontact, onToggleFavorite }) {
                             <p><Mail size={10} /> {contact.email || contact.Email}</p>
                             <p className="group">{contact.group || contact.Group}</p>
                             <div>
-                                <button ><Pencil size={10} /> Edit</button>
+                                <button onClick={() => Edit(contact)}><Pencil size={10} /> Edit</button>
                                 <button className='delete-contact' onClick={() => Deletecontact(contact.id || contact._id)}><Trash size={10} /> Delete</button>
                             </div>
                         </div>
