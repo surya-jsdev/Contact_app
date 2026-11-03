@@ -6,10 +6,10 @@ function SearchBar({ contacts }) {
   const [search, setSearch] = useState('')
 
   const searchValue = search.toLowerCase() ? contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(search) ||
-        contact.Phone.toLowerCase().includes(search)
-      ): null
-  
+    contact.name.toLowerCase().includes(search.toLowerCase()) ||
+    (contact.phone || contact.Phone || '').toLowerCase().includes(search.toLowerCase())
+  ) : null
+
 
   return (
     <div className='search-container'>
@@ -25,9 +25,9 @@ function SearchBar({ contacts }) {
       {search && (
         <div className='search-results'>
           {searchValue.length > 0 ? searchValue.map((contact) => (
-            <div className='search-result' key={contact.id}>
+            <div className='search-result' key={contact.id || contact._id}>
               <h3>{contact.name}</h3>
-              <p>{contact.Phone}</p>
+              <p>{contact.phone || contact.Phone}</p>
             </div>
           )) : <p className='search-result'>No contacts found.</p>}
         </div>

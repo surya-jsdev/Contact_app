@@ -1,0 +1,86 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "name": "Amma",
+      "Phone": "+91 6369824770",
+      "Email": "amma@gmail.com",
+      "Group": "Famliy",
+      "color": "#60a772",
+      "isFavorite": true
+    },
+    {
+      "id": "2",
+      "name": "Ramesh Kumar",
+      "Phone": "+91 6369824770",
+      "Email": "ramesh.k@gmail.com",
+      "Group": "Friends",
+      "color": "#60a772",
+      "isFavorite": false
+    },
+    {
+      "id": "3",
+      "name": "Suresh P",
+      "Phone": "+91 6369824770",
+      "Email": "suresh@gmail.com",
+      "Group": "Friends",
+      "color": "#064df3",
+      "isFavorite": false
+    },
+    {
+      "id": "4",
+      "name": "Gayathri N",
+      "Phone": "+91 6369824770",
+      "Email": "gayathari@gmail.com",
+      "Group": "Friends",
+      "color": "#064df3",
+      "isFavorite": false
+    },
+    {
+      "id": "5",
+      "name": "Appa",
+      "Phone": "+91 94440 55566",
+      "Email": "appa@gmail.com",
+      "Group": "Famliy",
+      "color": "#c71585",
+      "isFavorite": false
+    },
+    {
+      "id": "6",
+      "name": "Manoj V",
+      "Phone": "+91 6369824770",
+      "Email": "manoj@gmail.com",
+      "Group": "Work",
+      "color": "#60a772",
+      "isFavorite": true
+    },
+    {
+      "id": "7",
+      "name": "Keerthana R",
+      "Phone": "+91 95000 999",
+      "Email": "keerthana@gmail.com",
+      "Group": "Friends",
+      "color": "#064df3",
+      "isFavorite": false
+    },
+    {
+      "name": "surya",
+      "phone": "6369824770",
+      "email": "surya@gmail.com",
+      "group": "Work",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "Q0wC1cMarYg"
+    },
+    {
+      "name": "Hariharan",
+      "phone": "9369584701",
+      "email": "hari@gmail.com",
+      "group": "Friends",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "iB6V0tIxerc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

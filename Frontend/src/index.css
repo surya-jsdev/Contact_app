@@ -37,7 +37,7 @@ body {
   grid-template-columns: minmax(220px, 0.46fr) minmax(0, 1fr);
   align-items: start;
   gap: 22px;
-  width: min(1200px, 86%);
+  width: min(1216px, calc(100% - 48px));
   margin: 20px auto;
 }
 
@@ -194,7 +194,8 @@ body {
 
 .Card {
   display: flex;
-  width: 380px;
+  width: 100%;
+  min-width: 0;
   align-items: flex-start;
   gap: 10px;
   padding: 12px;
@@ -299,19 +300,29 @@ body {
   background-color: mediumvioletred;
   border-radius: 50%;
 }
-.group{
-  background-color:mediumvioletred;
-  color:white;
+.Card .group {
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #e8f0ff;
+  color: #2455c7;
+  font-size: 0.625rem;
+  font-weight: 600;
 }
 .avatar p {
   color: white;
   font-size: 0.8rem;
 }
 
+.empty-contacts {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 700px) {
   .Home {
     grid-template-columns: 1fr;
-    width: min(520px, 92%);
+    width: min(520px, calc(100% - 32px));
   }
 }
 
@@ -322,5 +333,13 @@ body {
 
   .Cards {
     grid-template-columns: 1fr;
+  }
+
+  .header {
+    gap: 12px;
+  }
+
+  .Home {
+    margin-block: 16px;
   }
 }

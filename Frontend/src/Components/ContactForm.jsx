@@ -1,97 +1,166 @@
-import { useState } from 'react'
 
-function ContactForm({ AddContact, editingContact, UpdateContact, onCancelEdit }) {
+import { useState, useEffect } from "react";
 
-    const [formData, setFormData] = useState(() => ({
-        name: editingContact?.name ?? '',
-        phone: editingContact?.Phone ?? '',
-        email: editingContact?.Email ?? '',
-        group: editingContact?.Group ?? 'Friends'
-    }))
+function ContactForm({
+    AddContact,
+    editingContact,
+    UpdateContact,
+    onCancelEdit
+}) {
 
-    // handleForm Data
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        group: "Friends"
+    });
+
+  
+    useEffect(() => {
+        if (editingContact) {
+            setFormData({
+                name: editingContact.name || "",
+                phone: editingContact.phone || editingContact.Phone || "",
+                email: editingContact.email || editingContact.Email || "",
+                group: editingContact.group || editingContact.Group || "Friends"
+            });
+        } else {
+            setFormData({
+                name: "",
+                phone: "",
+                email: "",
+                group: "Friends"
+            });
+        }
+    }, [editingContact]);
+
+    // Handle input changes
     const handleInput = (e) => {
-        const { name, value } = e.target
+        const { name, value } = e.target;
+
         setFormData((prev) => ({
             ...prev,
             [name]: value
         }));
-    }
+    };
 
-// handle Savedata
-    const handleSave = (e) => {
-        e.preventDefault()
+    // Handle save and update
+    const handleSave = async (e) => {
+        e.preventDefault();
 
         const contact = {
-            id: editingContact?.id ?? Date.now(),
-            name: formData.name,
-            Phone: formData.phone,
-            Email: formData.email,
-            Group: formData.group,
-            color: editingContact?.color ?? '#60a772',
-            isFavorite: editingContact?.isFavorite ?? false
-        }
+            ...formData,
+            color: editingContact?.color || "#60a772",
+            isFavorite: editingContact?.isFavorite || false
+        };
 
-        if (editingContact) {
-            UpdateContact(contact)
-            onCancelEdit()
-        } else {
-            AddContact(contact)
-        }
+        try {
+            if (editingContact) {
+                await UpdateContact(editingContact.id || editingContact._id, contact);
+            } else {
+                await AddContact(contact);
+            }
 
-        setFormData({
-            name: '',
-            phone: '',
-            email: '',
-            group: 'Friends'
-        })
-    }
+            setFormData({
+                name: "",
+                phone: "",
+                email: "",
+                group: "Friends"
+            });
+
+            if (editingContact) {
+                onCancelEdit();
+            }
+
+        } catch (error) {
+            console.error("Contact save error:", error);
+        }
+    };
 
     return (
         <>
-            <div className='contact'>
+            <div className="contact">
                 <form onSubmit={handleSave}>
-                    <p>{editingContact ? 'Edit Contact' : 'Add Contact'}</p>
-                    <div className='formlabel'>
+
+                    <p>
+                        {editingContact ? "Edit Contact" : "Add Contact"}
+                    </p>
+
+                    <div className="formlabel">
                         <label htmlFor="name">Name</label>
-                        <input id="name" type='text' placeholder='Fullname' name='name' value={formData.name} onChange={handleInput} required />
+                        <input
+                            id="name"
+                            type="text"
+                            placeholder="Fullname"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInput}
+                            required
+                        />
                     </div>
-                    <div className='formlabel'>
+
+
+                    <div className="formlabel">
                         <label htmlFor="phone">Phone</label>
-                        <input id="phone" type='tel' placeholder='+91' name="phone" value={formData.phone} onChange={handleInput} required />
+                        <input
+                            id="phone"
+                            type="tel"
+                            placeholder="+91"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInput}
+                            required
+                        />
                     </div>
-                    <div className='formlabel'>
+
+                    <div className="formlabel">
                         <label htmlFor="email">Email</label>
-                        <input id="email" type='email' placeholder='name@gmail.com' name="email" value={formData.email} onChange={handleInput}/>
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="name@gmail.com"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInput}
+                        />
                     </div>
-                    <div className='formlabel'>
+
+                    <div className="formlabel">
                         <label htmlFor="group">Group</label>
-                        <select id="group" name="group" value={formData.group} onChange={handleInput}>
-                            <option value="Friends">
-                                Friends
-                            </option>
-                            <option value="Family">
-                                Family
-                            </option>
-                            <option value="Work">
-                                Work
-                            </option>
+                        <select
+                            id="group"
+                            name="group"
+                            value={formData.group}
+                            onChange={handleInput}
+                        >
+                            <option value="Friends">Friends</option>
+                            <option value="Family">Family</option>
+                            <option value="Work">Work</option>
                         </select>
                     </div>
+
                     <div className="formlabel">
-                        <button className='btn' type="submit">
-                            {editingContact ? 'Update Contact' : 'Save Contact'}
+                        <button className="btn" type="submit">
+                            {editingContact
+                                ? "Update Contact"
+                                : "Save Contact"}
                         </button>
+
                         {editingContact && (
-                            <button className='btn' type="button" onClick={onCancelEdit}>
+                            <button
+                                className="btn"
+                                type="button"
+                                onClick={onCancelEdit}
+                            >
                                 Cancel
                             </button>
                         )}
                     </div>
+
                 </form>
             </div>
         </>
-    )
+    );
 }
 
-export default ContactForm
+export default ContactForm;
