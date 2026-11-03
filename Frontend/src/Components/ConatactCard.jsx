@@ -1,6 +1,6 @@
 import { Mail, Pencil, PhoneIcon, Star, Trash } from "lucide-react";
 
-function ConatactCard({ contacts, Edit, Deletecontact, onToggleFavorite }) {
+function ConatactCard({ contacts, onEdit, onDelete, onToggleFavorite }) {
     return (
             <div className="Cards">
                 {contacts.map((contact) => (
@@ -11,11 +11,11 @@ function ConatactCard({ contacts, Edit, Deletecontact, onToggleFavorite }) {
                         <div className='Carditem'>
                             <h2>{contact.name}</h2>
                             <p><PhoneIcon size={10} /> {contact.phone || contact.Phone}</p>
-                            <p><Mail size={10} /> {contact.email || contact.Email}</p>
-                            <p className="group">{contact.group || contact.Group}</p>
+                            <p><Mail size={10} />   {contact.email || contact.Email}</p>
+                            <p className="group" style={{ backgroundColor: contact.color , color:"white"}}>{contact.group || contact.Group}</p>
                             <div>
-                                <button onClick={() => Edit(contact)}><Pencil size={10} /> Edit</button>
-                                <button className='delete-contact' onClick={() => Deletecontact(contact.id || contact._id)}><Trash size={10} /> Delete</button>
+                                <button onClick={() => onEdit(contact)}><Pencil size={10} /> Edit</button>
+                                <button className='delete-contact' onClick={() => onDelete(contact.id || contact._id)}><Trash size={10} /> Delete</button>
                             </div>
                         </div>
                         <div>

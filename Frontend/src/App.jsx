@@ -26,7 +26,7 @@ function App() {
     const newContact = await addContact(contact);
     setContacts((currentContacts) => [...currentContacts, newContact]);
     setSuccessMessage("Contact Added SuccessFully");
-    setError("");
+      setError("");
   };
 
   const handleUpdateContact = async (id, contact) => {
@@ -83,11 +83,11 @@ function App() {
           {error && <p role="alert">{error}</p>}
           {favoriteContacts.length > 0 && (
             <section className="favorite-section">
-              <h2>⭐ Favourites</h2>
+              <h2><i class="fa-solid fa-star"></i> Favourites</h2>
               <ConatactCard
                 contacts={favoriteContacts}
-                Editcontact={setEditingContact}
-                Deletecontact={handleDeleteContact}
+                onEdit={setEditingContact}
+                onDelete={handleDeleteContact}
                 onToggleFavorite={handleToggleFavorite}
               />
             </section>
@@ -96,8 +96,8 @@ function App() {
             <h2>All contacts</h2>
             <ConatactCard
               contacts={otherContacts}
-              Editcontact={setEditingContact}
-              Deletecontact={handleDeleteContact}
+              onEdit={setEditingContact}
+              onDelete={handleDeleteContact}
               onToggleFavorite={handleToggleFavorite}
             />
           </section>

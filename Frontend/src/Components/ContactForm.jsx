@@ -99,7 +99,6 @@ function ContactForm({
                         />
                     </div>
 
-
                     <div className="formlabel">
                         <label htmlFor="phone">Phone</label>
                         <input

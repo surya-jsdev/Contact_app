@@ -7,7 +7,10 @@
       "Email": "amma@gmail.com",
       "Group": "Famliy",
       "color": "#60a772",
-      "isFavorite": true
+      "isFavorite": true,
+      "phone": "+91 6369824770",
+      "email": "amma@gmail.com",
+      "group": "Family"
     },
     {
       "id": "2",
@@ -16,7 +19,7 @@
       "Email": "ramesh.k@gmail.com",
       "Group": "Friends",
       "color": "#60a772",
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "3",
@@ -52,7 +55,7 @@
       "Email": "manoj@gmail.com",
       "Group": "Work",
       "color": "#60a772",
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "7",
@@ -62,24 +65,6 @@
       "Group": "Friends",
       "color": "#064df3",
       "isFavorite": false
-    },
-    {
-      "name": "surya",
-      "phone": "6369824770",
-      "email": "surya@gmail.com",
-      "group": "Work",
-      "color": "#60a772",
-      "isFavorite": false,
-      "id": "Q0wC1cMarYg"
-    },
-    {
-      "name": "Hariharan",
-      "phone": "9369584701",
-      "email": "hari@gmail.com",
-      "group": "Friends",
-      "color": "#60a772",
-      "isFavorite": false,
-      "id": "iB6V0tIxerc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
