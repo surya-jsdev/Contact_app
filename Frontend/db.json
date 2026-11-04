@@ -8,7 +8,7 @@
       "Group": "Famliy",
       "color": "#60a772",
       "isFavorite": true,
-      "phone": "+91 6369824770",
+      "phone": "6369854741",
       "email": "amma@gmail.com",
       "group": "Family"
     },
@@ -20,15 +20,6 @@
       "Group": "Friends",
       "color": "#60a772",
       "isFavorite": true
-    },
-    {
-      "id": "3",
-      "name": "Suresh P",
-      "Phone": "+91 6369824770",
-      "Email": "suresh@gmail.com",
-      "Group": "Friends",
-      "color": "#064df3",
-      "isFavorite": false
     },
     {
       "id": "4",
@@ -70,10 +61,10 @@
       "name": "surya",
       "phone": "6369824770",
       "email": "surya@gmail.com",
-      "group": "Family",
+      "group": "Friends",
       "color": "#60a772",
       "isFavorite": false,
-      "id": "i-9_2B-pagA"
+      "id": "12nYpmBWcC0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
