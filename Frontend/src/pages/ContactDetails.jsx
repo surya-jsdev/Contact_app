@@ -33,9 +33,7 @@ function ContactDetails() {
     };
 
     fetchContact();
-    return () => {
-      active = false;
-    };
+
   }, [id]);
 
   const handleDelete = async () => {
@@ -73,9 +71,7 @@ function ContactDetails() {
 
   return (
     <main className="contact-details-page">
-      <Link to="/" className="details-back-link">
-        Back to contacts
-      </Link>
+     
       <section className="contact-details-card">
         <h1>Contact Details</h1>
         <dl>
@@ -96,7 +92,9 @@ function ContactDetails() {
             <dd>{contact.group || contact.Group || "Not provided"}</dd>
           </div>
         </dl>
+     
         {error && <p role="alert">{error}</p>}
+
         <div className="details-actions">
           <Link className="btn" to={`/edit/${id}`}>
             Edit Contact

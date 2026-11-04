@@ -17,8 +17,8 @@ function Home() {
   );
 
   useEffect(() => {
-    let active = true;
 
+    let active = true;
     getContacts()
       .then((data) => {
         if (active) {
@@ -32,14 +32,10 @@ function Home() {
           setError("Failed to load contacts.");
         }
       });
-
-    return () => {
-      active = false;
-    };
   }, []);
 
   const handleEditContact = (contact) => {
-    navigate(`/edit/${contact.id ?? contact._id}`);
+    navigate(`/edit/${contact.id || contact._id}`);
   };
 
   const handleDeleteContact = async (id) => {
@@ -47,7 +43,7 @@ function Home() {
       await deleteContact(id);
       setContacts((currentContacts) =>
         currentContacts.filter(
-          (contact) => String(contact.id ?? contact._id) !== String(id)
+          (contact) => String(contact.id || contact._id) !== String(id)
         )
       );
     } catch (deleteError) {
@@ -57,7 +53,7 @@ function Home() {
   };
 
   const handleToggleFavorite = async (contact) => {
-    const id = contact.id ?? contact._id;
+    const id = contact.id || contact._id;
     try {
       const updatedContact = await updateContact(id, {
         ...contact,
@@ -65,7 +61,7 @@ function Home() {
       });
       setContacts((currentContacts) =>
         currentContacts.map((currentContact) =>
-          String(currentContact.id ?? currentContact._id) === String(id)
+          String(currentContact.id || currentContact._id) === String(id)
             ? updatedContact
             : currentContact
         )
@@ -78,7 +74,9 @@ function Home() {
 
   return (
     <>
+    {/* Header Components */}
       <Header Data={contacts} />
+
       <main className="Home home-page">
         <section className="contact-list">
           <SearchBar contacts={contacts} />

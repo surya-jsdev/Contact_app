@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "Amma",
-      "phone": "6369824770",
+      "phone": "+91 6380027811",
       "email": "amma@gmail.com",
       "group": "Family",
       "color": "#c71585",
@@ -25,7 +25,7 @@
       "email": "suresh@gmail.com",
       "group": "Friends",
       "color": "#064df3",
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "4",
@@ -46,15 +46,6 @@
       "isFavorite": false
     },
     {
-      "id": "6",
-      "name": "Manoj V",
-      "phone": "+91 6369824770",
-      "email": "manoj@gmail.com",
-      "group": "Work",
-      "color": "#60a772",
-      "isFavorite": false
-    },
-    {
       "id": "7",
       "name": "Keerthana R",
       "phone": "+91 95000 999",
@@ -69,7 +60,7 @@
       "email": "surya@gmail.com",
       "group": "Family",
       "color": "#60a772",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": "OLMJFX3"
     }
   ]

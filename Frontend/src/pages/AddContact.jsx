@@ -12,11 +12,14 @@ function AddContact() {
 
   return (
     <main className="AddNew contact">
-        <section className="form-page">
-
-      <Link to="/">Back to contacts</Link>
-      <ContactForm AddContact={handleAddContact} />
-        </section>
+      <section className="form-page">
+        <button className="Back btn">
+          <Link to="/" className="link">
+            Back to contacts
+          </Link>
+        </button>
+        <ContactForm AddContact={handleAddContact} />
+      </section>
     </main>
   );
 }
