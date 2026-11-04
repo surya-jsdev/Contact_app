@@ -2,6 +2,20 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Running the app
+
+Install dependencies with `npm install`, then start the contacts API and the frontend in separate terminals from this directory:
+
+```sh
+npm run server
+```
+
+```sh
+npm run dev
+```
+
+The API serves and stores contacts in `db.json` at `http://localhost:3000/contacts`.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
