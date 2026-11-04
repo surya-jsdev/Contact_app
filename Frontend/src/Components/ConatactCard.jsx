@@ -11,7 +11,7 @@ function ConatactCard({ contacts, onEdit, onDelete, onToggleFavorite }) {
         >
           <Link
             className="contact-card-link"
-            to={`/contact/${contact.id ?? contact._id}`}
+            to={`/contact/${contact.id || contact._id}`}
           >
             <div className="avatar" style={{ backgroundColor: contact.color }}>
               <p>{contact.name.slice(0, 2).toUpperCase()}</p>
