@@ -3,10 +3,10 @@
     {
       "id": "1",
       "name": "Amma",
-      "phone": "+91 6369824770",
+      "phone": "6369824770",
       "email": "amma@gmail.com",
       "group": "Family",
-      "color": "#60a772",
+      "color": "#c71585",
       "isFavorite": true
     },
     {
@@ -16,7 +16,7 @@
       "email": "ramesh.k@gmail.com",
       "group": "Friends",
       "color": "#60a772",
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "email": "suresh@gmail.com",
       "group": "Friends",
       "color": "#064df3",
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "id": "4",
@@ -64,13 +64,13 @@
       "isFavorite": false
     },
     {
-      "id": "i-9_2B-pagA",
-      "name": "surya",
+      "name": "Surya",
       "phone": "6369824770",
       "email": "surya@gmail.com",
       "group": "Family",
       "color": "#60a772",
-      "isFavorite": false
+      "isFavorite": false,
+      "id": "OLMJFX3"
     }
   ]
 }

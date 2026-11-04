@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function ContactForm({
     AddContact,
@@ -8,31 +8,13 @@ function ContactForm({
     onCancelEdit
 }) {
 
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        group: "Friends"
-    });
-
-  
-    useEffect(() => {
-        if (editingContact) {
-            setFormData({
-                name: editingContact.name || "",
-                phone: editingContact.phone || editingContact.Phone || "",
-                email: editingContact.email || editingContact.Email || "",
-                group: editingContact.group || editingContact.Group || "Friends"
-            });
-        } else {
-            setFormData({
-                name: "",
-                phone: "",
-                email: "",
-                group: "Friends"
-            });
-        }
-    }, [editingContact]);
+    const [submitError, setSubmitError] = useState("");
+    const [formData, setFormData] = useState(() => ({
+        name: editingContact?.name || "",
+        phone: editingContact?.phone || editingContact?.Phone || "",
+        email: editingContact?.email || editingContact?.Email || "",
+        group: editingContact?.group || editingContact?.Group || "Friends"
+    }));
 
     // Handle input changes
     const handleInput = (e) => {
@@ -47,6 +29,7 @@ function ContactForm({
     // Handle save and update
     const handleSave = async (e) => {
         e.preventDefault();
+        setSubmitError("");
 
         const contact = {
             ...formData,
@@ -74,6 +57,7 @@ function ContactForm({
 
         } catch (error) {
             console.error("Contact save error:", error);
+            setSubmitError(error.message || "Failed to save contact.");
         }
     };
 
@@ -85,6 +69,7 @@ function ContactForm({
                     <p>
                         {editingContact ? "Edit Contact" : "Add Contact"}
                     </p>
+                    {submitError && <p role="alert">{submitError}</p>}
 
                     <div className="formlabel">
                         <label htmlFor="name">Name</label>

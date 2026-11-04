@@ -1,6 +1,6 @@
 
 
-const API_URL = "http://localhost:3000/contacts";
+const API_URL = "http://localhost:3001/contacts";
 
 // Get ContactList
 
@@ -13,7 +13,21 @@ export const getContacts = async () => {
         return await response.json();
 
     } catch (error) {
-        console.error("GET Error:", error.message);
+        console.error("Failed:", error.message);
+        throw error;
+    }
+};
+
+export const getContactById = async (id) => {
+    try {
+        const response = await fetch(`${API_URL}/${id}`);
+        if (!response.ok) {
+            throw new Error("Failed to get contact")
+        }
+        return await response.json();
+
+    } catch (error) {
+        console.error("Failed:", error.message);
         throw error;
     }
 };

@@ -27,6 +27,20 @@ body {
   font-size: 1.25rem;
 }
 
+.header-title,
+.header-add {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-add {
+  padding: 7px 12px;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .header p {
   padding: 6px 14px;
   border-radius: 999px;
@@ -36,12 +50,16 @@ body {
 }
 
 .Home {
-  display: grid;
+  display: flex;
   grid-template-columns: minmax(220px, 0.46fr) minmax(0, 1fr);
-  align-items: start;
+  justify-content:center;
   gap: 22px;
   width: min(1216px, calc(100% - 48px));
   margin: 20px auto;
+}
+
+.home-page {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .contact {
@@ -107,6 +125,81 @@ body {
   cursor: pointer;
 }
 
+.form-page,
+.contact-details-page {
+  width: 500px;
+  margin: 24px auto;
+}
+
+.form-page > a,
+.details-back-link {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #2455c7;
+}
+.AddNew{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+.page-message {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  width: min(520px, calc(100% - 32px));
+  margin: 32px auto;
+}
+
+.contact-details-card {
+  padding: 22px;
+  border: 1px solid #e0e7f1;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(23 36 59 / 5%);
+}
+
+.contact-details-card h1 {
+  margin-bottom: 18px;
+  font-size: 1.25rem;
+}
+
+.contact-details-card dl {
+  display: grid;
+  gap: 14px;
+}
+
+.contact-details-card dt {
+  color: #59677d;
+  font-size: 0.8rem;
+}
+
+.contact-details-card dd {
+  margin-top: 3px;
+}
+
+.details-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.details-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.delete-button {
+  background: #c62828;
+}
+
+.delete-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
 .Cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -115,7 +208,7 @@ body {
 
 .contact-list {
   display: flex;
-  min-width: 0;
+  width: 700px;
   flex-direction: column;
   gap: 18px;
 }
@@ -151,8 +244,15 @@ body {
 }
 
 .search-result {
+  display: block;
   padding: 9px 12px;
   border-bottom: 1px solid #edf0f5;
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-result:hover {
+  background: #f3f6fb;
 }
 
 .search-result:last-child {
@@ -196,11 +296,14 @@ body {
 }
 
 .Card {
-  display: flex;
-  width: 350px;
-  height: 150px;
-  align-items: flex-start;
-  gap: 10px;
+  display: grid;
+  width: 100%;
+  max-width: 350px;
+  min-height: 150px;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 8px 10px;
   padding: 12px;
   border: 1px solid #e0e7f1;
   border-radius: 9px;
@@ -210,7 +313,9 @@ body {
 
 .Carditem {
   display: flex;
-  width: 300px;
+  min-width: 0;
+  grid-column: 2 / -1;
+  grid-row: 1;
   flex-direction: column;
   flex: 1;
   gap: 4px;
@@ -250,10 +355,31 @@ body {
   font-weight: 600;
 }
 
-.Carditem>div {
+.contact-card-link {
   display: flex;
+  min-width: 0;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-card-link:hover h2 {
+  text-decoration: underline;
+}
+
+.contact-actions {
+  display: flex;
+  grid-column: 2;
+  grid-row: 2;
   gap: 6px;
   margin-top: 2px;
+}
+
+.favorite-actions {
+  grid-column: 3;
+  grid-row: 2;
 }
 
 .Card button {

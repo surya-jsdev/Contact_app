@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Search } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 function SearchBar({ contacts }) {
 
@@ -25,10 +26,14 @@ function SearchBar({ contacts }) {
       {search && (
         <div className='search-results'>
           {searchValue.length > 0 ? searchValue.map((contact) => (
-            <div className='search-result' key={contact.id || contact._id}>
+            <Link
+              className='search-result'
+              key={contact.id || contact._id}
+              to={`/contact/${contact.id ?? contact._id}`}
+            >
               <h3>{contact.name}</h3>
               <p>{contact.phone || contact.Phone}</p>
-            </div>
+            </Link>
           )) : <p className='search-result'>No contacts found.</p>}
         </div>
       )}
