@@ -234,7 +234,7 @@ body {
 .search-results {
   position: absolute;
   z-index: 1;
-  top: calc(100% + 4px);
+
   right: 0;
   left: 0;
   max-height: 240px;
@@ -259,6 +259,20 @@ body {
 
 .search-result:last-child {
   border-bottom: 0;
+} 
+
+.toast {
+  position: fixed;
+  z-index: 10;
+  right: 24px;
+  bottom: 24px;
+  max-width: calc(100vw - 48px);
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #1b7a46;
+  color: #fff;
+  box-shadow: 0 4px 14px rgb(23 36 59 / 20%);
+  font-size: 0.9rem;
 }
 
 .search-result h3 {

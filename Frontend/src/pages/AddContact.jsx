@@ -1,17 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
-import { addContact } from "../Api/contact";
+import { Link } from "react-router-dom";
 import ContactForm from "../Components/ContactForm";
 import { ArrowLeft } from "lucide-react";
 
-
 function AddContact() {
-  const navigate = useNavigate();
-
-  const handleAddContact = async (contact) => {
-    await addContact(contact);
-    navigate("/");
-  };
-
   return (
     <main className="AddNew contact">
       <section className="form-page">
@@ -20,7 +11,8 @@ function AddContact() {
           <ArrowLeft size={18} style={{marginRight:'4px'}}/>Back to contacts
           </Link>
         </button>
-        <ContactForm AddContact={handleAddContact} />
+        {/* ConatctForm Component */}
+        <ContactForm />
       </section>
     </main>
   );

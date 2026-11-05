@@ -1,50 +1,20 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deleteContact, getContactById } from "../Api/contact";
+import { useContacts } from "../hooks/useContacts";
 
 function ContactDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [contact, setContact] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-
-    const fetchContact = async () => {
-      try {
-        setLoading(true);
-        setError("");
-        const data = await getContactById(id);
-        if (active) {
-          setContact(data);
-        }
-      } catch (fetchError) {
-        if (active) {
-          setError(fetchError.message || "Failed to load contact.");
-        }
-      } finally {
-        if (active) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchContact();
-
-  }, [id]);
+  const { contacts, loading, error, deleteContact } = useContacts();
+  const contact = contacts.find(
+    (item) => String(item.id || item._id) === String(id)
+  );
 
   const handleDelete = async () => {
     try {
-      setDeleting(true);
-      setError("");
-      await deleteContact(id);
+      await deleteContact(contact.id || contact._id);
       navigate("/");
     } catch (deleteError) {
-      setError(deleteError.message || "Failed to delete contact.");
-      setDeleting(false);
+      console.error("Error deleting contact:", deleteError);
     }
   };
 
@@ -103,9 +73,8 @@ function ContactDetails() {
             className="btn delete-button"
             type="button"
             onClick={handleDelete}
-            disabled={deleting}
           >
-            {deleting ? "Deleting..." : "Delete Contact"}
+            Delete Contact
           </button>
           <button>
              <Link to="/">Back to contacts</Link>

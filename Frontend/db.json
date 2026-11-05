@@ -1,18 +1,9 @@
 {
   "contacts": [
     {
-      "id": "1",
-      "name": "Amma",
-      "phone": "6369824770",
-      "email": "amma01@gmail.com",
-      "group": "Family",
-      "color": "#c71585",
-      "isFavorite": true
-    },
-    {
       "id": "2",
-      "name": "Ramesh Kumar",
-      "phone": "+91 6369824770",
+      "name": "Ramesh Kumar ",
+      "phone": "+91 6369824110",
       "email": "ramesh.k@gmail.com",
       "group": "Friends",
       "color": "#60a772",
@@ -46,13 +37,58 @@
       "isFavorite": false
     },
     {
-      "name": "Surya",
-      "phone": "9396874550",
-      "email": "surya@gmail.com",
+      "name": "Hariharan",
+      "phone": "9368724854",
+      "email": "hari@gmail.com",
+      "group": "Work",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "mqxTPi7"
+    },
+    {
+      "name": "Sathaya",
+      "phone": "6382475484",
+      "email": "sathaya@gmail.com",
+      "group": "Work",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "cH8NW_p"
+    },
+    {
+      "name": "Amma",
+      "phone": "6382477082",
+      "email": "amma@gmail.com",
+      "group": "Family",
+      "color": "#60a772",
+      "isFavorite": true,
+      "id": "wBFVoxD"
+    },
+    {
+      "name": "Dhanush",
+      "phone": "9368567458",
+      "email": "dhanush@gmail.com",
+      "group": "Friends",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "-3bwrqu"
+    },
+    {
+      "name": "saravanan",
+      "phone": "9365878424",
+      "email": "saravana@gmail.com",
+      "group": "Friends",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "Lrf-Kl7"
+    },
+    {
+      "name": "vimal",
+      "phone": "9856457899",
+      "email": "vimal@gmail.com",
       "group": "Family",
       "color": "#60a772",
       "isFavorite": false,
-      "id": "OLMJFX3"
+      "id": "lebwW9W"
     }
   ]
 }

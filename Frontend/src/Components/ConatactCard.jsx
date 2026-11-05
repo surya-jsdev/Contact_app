@@ -1,10 +1,35 @@
 import { Mail, Pencil, PhoneIcon, Star, Trash } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContacts } from "../hooks/useContacts";
 
-function ConatactCard({ contacts, onEdit, onDelete, onToggleFavorite }) {
+function ConatactCard({ favoritesOnly = false }) {
+  const navigate = useNavigate();
+  const { contacts, deleteContact, toggleFavourite } = useContacts();
+  const displayedContacts = contacts.filter(
+    (contact) =>
+      (contact.isFavorite === true || contact.isFavorite === "true") ===
+      favoritesOnly
+  );
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteContact(id);
+    } catch (error) {
+      console.error("Failed to delete contact:", error);
+    }
+  };
+
+  const handleToggleFavourite = async (contact) => {
+    try {
+      await toggleFavourite(contact);
+    } catch (error) {
+      console.error("Failed to update favourite:", error);
+    }
+  };
+
   return (
     <div className="Cards">
-      {contacts.map((contact) => (
+      {displayedContacts.map((contact) => (
         <div
           className={`Card${contact.isFavorite === true || contact.isFavorite === "true" ? " favorite-card" : ""}`}
           key={contact.id || contact._id}
@@ -33,12 +58,16 @@ function ConatactCard({ contacts, onEdit, onDelete, onToggleFavorite }) {
             </div>
           </Link>
           <div className="contact-actions">
-            <button onClick={() => onEdit(contact)}>
+            <button
+              onClick={() =>
+                navigate(`/edit/${contact.id ?? contact._id}`)
+              }
+            >
               <Pencil size={10} /> Edit
             </button>
             <button
               className="delete-contact"
-              onClick={() => onDelete(contact.id || contact._id)}
+              onClick={() => handleDelete(contact.id ?? contact._id)}
             >
               <Trash size={10} /> Delete
             </button>
@@ -52,7 +81,7 @@ function ConatactCard({ contacts, onEdit, onDelete, onToggleFavorite }) {
                   ? "Remove from favourites"
                   : "Add to favourites"
               }
-              onClick={() => onToggleFavorite(contact)}
+              onClick={() => handleToggleFavourite(contact)}
             >
               <Star
                 size={14}
@@ -67,7 +96,9 @@ function ConatactCard({ contacts, onEdit, onDelete, onToggleFavorite }) {
         </div>
       ))}
 
-      {contacts.length === 0 && <p className="empty-contacts">No contacts.</p>}
+      {displayedContacts.length === 0 && (
+        <p className="empty-contacts">No contacts.</p>
+      )}
     </div>
   );
 }

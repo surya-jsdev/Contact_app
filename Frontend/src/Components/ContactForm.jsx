@@ -1,13 +1,15 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContacts } from "../hooks/useContacts";
+import { useToast } from "../context/ToastContext";
 
 function ContactForm({
-    AddContact,
-    editingContact,
-    UpdateContact,
-    onCancelEdit
+    editingContact
 }) {
-
+    const navigate = useNavigate();
+    const { addContact, updateContact } = useContacts();
+    const showToast = useToast();
     const [submitError, setSubmitError] = useState("");
     const [formData, setFormData] = useState(() => ({
         name: editingContact?.name || "",
@@ -39,9 +41,14 @@ function ContactForm({
 
         try {
             if (editingContact) {
-                await UpdateContact(editingContact.id || editingContact._id, contact);
+                const id = editingContact.id || editingContact._id;
+                await updateContact(id, contact);
+                showToast("Contact updated successfully.");
+                navigate(`/contact/${id}`);
             } else {
-                await AddContact(contact);
+                await addContact(contact);
+                showToast("Contact added successfully.");
+                navigate("/");
             }
 
             setFormData({
@@ -50,10 +57,6 @@ function ContactForm({
                 email: "",
                 group: "Friends"
             });
-
-            if (editingContact) {
-                onCancelEdit();
-            }
 
         } catch (error) {
             console.error("Contact save error:", error);
@@ -134,7 +137,11 @@ function ContactForm({
                             <button
                                 className="btn"
                                 type="button"
-                                onClick={onCancelEdit}
+                                onClick={() =>
+                                    navigate(
+                                        `/contact/${editingContact.id ?? editingContact._id}`
+                                    )
+                                }
                             >
                                 Cancel
                             </button>
