@@ -17,8 +17,8 @@ function Home() {
     <>
       <Header Data={contacts} />
 
-      <main className="Home home-page">
-        <section className="contact-list">
+      <main className="mx-auto my-5 flex w-[min(1216px,calc(100%-48px))] justify-center gap-5.5 max-[700px]:w-[min(520px,calc(100%-32px))] max-[480px]:my-4">
+        <section className="flex w-[700px] flex-col gap-[18px]">
 
           <SearchBar contacts={contacts} />
 
@@ -27,9 +27,9 @@ function Home() {
 
           {/* Favourites */}
           {!loading && favoriteContacts.length > 0 && (
-            <section className="favorite-section">
-              <h2>
-                <i className="fa-solid fa-star"></i>
+            <section className="flex flex-col gap-[10px]">
+              <h2 className="text-sm">
+                <i className="fa-solid fa-star text-[#ffbb00]"></i>
                 Favourites
               </h2>
 
@@ -38,8 +38,8 @@ function Home() {
           )}
 
           {/* Other Contacts */}
-          {!loading && <section className="all-contacts">
-            <h2>All contacts</h2>
+          {!loading && <section className="flex flex-col gap-[10px]">
+            <h2 className="text-sm">All contacts</h2>
 
             <ConatactCard />
           </section>}

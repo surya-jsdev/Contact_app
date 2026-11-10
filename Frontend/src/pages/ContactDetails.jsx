@@ -19,12 +19,12 @@ function ContactDetails() {
   };
 
   if (loading) {
-    return <p className="page-message">Loading contact...</p>;
+    return <p className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] justify-items-start gap-3">Loading contact...</p>;
   }
 
   if (error && !contact) {
     return (
-      <main className="page-message" role="alert">
+      <main className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] justify-items-start gap-3" role="alert">
         <p>{error}</p>
       </main>
     );
@@ -32,7 +32,7 @@ function ContactDetails() {
 
   if (!contact) {
     return (
-      <main className="page-message">
+      <main className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] justify-items-start gap-3">
         <p>Contact not found.</p>
        
       </main>
@@ -40,43 +40,43 @@ function ContactDetails() {
   }
 
   return (
-    <main className="contact-details-page">
+    <main className="mx-auto my-6 w-[500px]">
      
-      <section className="contact-details-card">
-        <h1>Contact Details</h1>
-        <dl>
+      <section className="rounded-xl border border-[#e0e7f1] bg-white p-[22px] shadow-[0_2px_8px_rgb(23_36_59_/_5%)]">
+        <h1 className="mb-[18px] text-xl">Contact Details</h1>
+        <dl className="grid gap-[14px]">
           <div>
-            <dt>Name</dt>
-            <dd>{contact.name}</dd>
+            <dt className="text-[0.8rem] text-[#59677d]">Name</dt>
+            <dd className="mt-[3px]">{contact.name}</dd>
           </div>
           <div>
-            <dt>Email</dt>
-            <dd>{contact.email || contact.Email || "Not provided"}</dd>
+            <dt className="text-[0.8rem] text-[#59677d]">Email</dt>
+            <dd className="mt-[3px]">{contact.email || contact.Email || "Not provided"}</dd>
           </div>
           <div>
-            <dt>Phone</dt>
-            <dd>{contact.phone || contact.Phone || "Not provided"}</dd>
+            <dt className="text-[0.8rem] text-[#59677d]">Phone</dt>
+            <dd className="mt-[3px]">{contact.phone || contact.Phone || "Not provided"}</dd>
           </div>
           <div>
-            <dt>Group</dt>
-            <dd>{contact.group || contact.Group || "Not provided"}</dd>
+            <dt className="text-[0.8rem] text-[#59677d]">Group</dt>
+            <dd className="mt-[3px]">{contact.group || contact.Group || "Not provided"}</dd>
           </div>
         </dl>
      
         {error && <p role="alert">{error}</p>}
 
-        <div className="details-actions">
-          <Link className="btn" to={`/edit/${id}`}>
+        <div className="mt-[22px] flex gap-[10px]">
+          <Link className="inline-flex min-h-[34px] items-center justify-center rounded-[5px] border-0 bg-[#2861e8] p-[6px] text-white no-underline" to={`/edit/${id}`}>
             Edit Contact
           </Link>
           <button
-            className="btn delete-button"
+            className="inline-flex min-h-[34px] cursor-pointer items-center justify-center rounded-[5px] border-0 bg-[#c62828] p-[6px] text-white"
             type="button"
             onClick={handleDelete}
           >
             Delete Contact
           </button>
-          <button>
+          <button className="inline-flex min-h-[34px] cursor-pointer items-center justify-center rounded-[5px] border-0 bg-[#2861e8] p-[6px] text-white">
              <Link to="/">Back to contacts</Link>
           </button>
         </div>

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ContactsProvider } from "./hooks/useContacts";
+import { ContactsProvider } from "./context/ContactsProvider";
 import { ToastProvider } from "./context/ToastContext";
 import AddContact from "./pages/AddContact";
 import ContactDetails from "./pages/ContactDetails";

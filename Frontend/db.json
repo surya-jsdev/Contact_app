@@ -2,10 +2,10 @@
   "contacts": [
     {
       "id": "2",
-      "name": "Ramesh Kumar ",
-      "phone": "+91 6369824110",
+      "name": "Ramesh Kumar",
+      "phone": "6369824110",
       "email": "ramesh.k@gmail.com",
-      "group": "Friends",
+      "group": "Family",
       "color": "#60a772",
       "isFavorite": true
     },
@@ -34,7 +34,7 @@
       "email": "appa@gmail.com",
       "group": "Family",
       "color": "#c71585",
-      "isFavorite": false
+      "isFavorite": true
     },
     {
       "name": "Hariharan",
@@ -60,7 +60,7 @@
       "email": "amma@gmail.com",
       "group": "Family",
       "color": "#60a772",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": "wBFVoxD"
     },
     {

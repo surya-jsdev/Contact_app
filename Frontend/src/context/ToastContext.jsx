@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-
-const ToastContext = createContext(null);
+import { useEffect, useState } from "react";
+import ToastContext from "./ToastContextValue";
 
 export function ToastProvider({ children }) {
   const [toast, setToast] = useState(null);
@@ -25,20 +24,10 @@ export function ToastProvider({ children }) {
     <ToastContext.Provider value={showToast}>
       {children}
       {toast && (
-        <div className="toast" role="status" aria-live="polite">
+        <div className="fixed bottom-6 right-6 z-10 max-w-[calc(100vw-48px)] rounded-lg bg-[#1b7a46] px-[18px] py-3 text-[0.9rem] text-white shadow-[0_4px_14px_rgb(23_36_59_/_20%)]" role="status" aria-live="polite">
           {toast.message}
         </div>
       )}
     </ToastContext.Provider>
   );
-}
-
-export function useToast() {
-  const showToast = useContext(ToastContext);
-
-  if (showToast === null) {
-    throw new Error("useToast must be used within a ToastProvider");
-  }
-
-  return showToast;
 }

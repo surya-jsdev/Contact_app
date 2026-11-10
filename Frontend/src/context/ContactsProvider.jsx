@@ -1,12 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import ContactsContext from "./ContactsContext";
 import {
   getContacts,
   addContact as apiAddContact,
   updateContact as apiUpdateContact,
   deleteContact as apiDeleteContact,
 } from "../Api/contact";
-
-const ContactsContext = createContext(null);
 
 export function ContactsProvider({ children }) {
   const [contacts, setContacts] = useState([]);
@@ -143,14 +142,4 @@ export function ContactsProvider({ children }) {
       {children}
     </ContactsContext.Provider>
   );
-}
-
-export function useContacts() {
-  const context = useContext(ContactsContext);
-
-  if (context === null) {
-    throw new Error("useContacts must be used within a ContactsProvider");
-  }
-
-  return context;
 }
