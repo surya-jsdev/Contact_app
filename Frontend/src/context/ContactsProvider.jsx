@@ -121,7 +121,6 @@ export function ContactsProvider({ children }) {
 
       return savedContact;
     } catch (error) {
-      console.error("Error updating favourite:", error);
       setError("Failed to update favourite.");
       throw error;
     }

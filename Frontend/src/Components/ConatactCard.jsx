@@ -44,7 +44,7 @@ function ConatactCard({ favoritesOnly = false }) {
             <div className="col-[2/-1] row-start-1 flex min-w-0 flex-1 flex-col gap-1">
               <h2 className="flex items-center justify-between gap-2 text-[0.8125rem] font-bold">{contact.name}</h2>
               <p className="text-[0.6875rem]  text-[#59677d] flex items-center gap-[6px]">
-                <PhoneIcon size={10} className=""/> {contact.phone || contact.Phone}
+                <PhoneIcon size={10} className=""/>+91 {contact.phone || contact.Phone}
               </p>
               <p className="text-[0.6875rem]  text-[#59677d] flex items-center gap-[6px]">
                 <Mail size={10} /> {contact.email || contact.Email}

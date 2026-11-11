@@ -7,12 +7,12 @@
       "email": "ramesh.k@gmail.com",
       "group": "Family",
       "color": "#60a772",
-      "isFavorite": true
+      "isFavorite": false
     },
     {
       "id": "3",
       "name": "Suresh P",
-      "phone": "+91 6369824770",
+      "phone": "6369824770",
       "email": "suresh@gmail.com",
       "group": "Friends",
       "color": "#064df3",
@@ -21,7 +21,7 @@
     {
       "id": "4",
       "name": "Gayathri N",
-      "phone": "+91 6369824770",
+      "phone": "6365852578",
       "email": "gayathari@gmail.com",
       "group": "Friends",
       "color": "#064df3",
@@ -30,7 +30,7 @@
     {
       "id": "5",
       "name": "Appa",
-      "phone": "+91 94440 55566",
+      "phone": "6350987458",
       "email": "appa@gmail.com",
       "group": "Family",
       "color": "#c71585",
@@ -55,24 +55,6 @@
       "id": "cH8NW_p"
     },
     {
-      "name": "Amma",
-      "phone": "6382477082",
-      "email": "amma@gmail.com",
-      "group": "Family",
-      "color": "#60a772",
-      "isFavorite": false,
-      "id": "wBFVoxD"
-    },
-    {
-      "name": "Dhanush",
-      "phone": "9368567458",
-      "email": "dhanush@gmail.com",
-      "group": "Friends",
-      "color": "#60a772",
-      "isFavorite": false,
-      "id": "-3bwrqu"
-    },
-    {
       "name": "saravanan",
       "phone": "9365878424",
       "email": "saravana@gmail.com",
@@ -82,13 +64,31 @@
       "id": "Lrf-Kl7"
     },
     {
-      "name": "vimal",
-      "phone": "9856457899",
-      "email": "vimal@gmail.com",
+      "name": "Amma",
+      "phone": "6380027811",
+      "email": "amma@gmail.com",
       "group": "Family",
       "color": "#60a772",
+      "isFavorite": true,
+      "id": "KW6eS5j"
+    },
+    {
+      "name": "Mani",
+      "phone": "9396458745",
+      "email": "mani@gmail.com",
+      "group": "Work",
+      "color": "#60a772",
       "isFavorite": false,
-      "id": "lebwW9W"
+      "id": "ygvykhZ"
+    },
+    {
+      "name": "Mani",
+      "phone": "9442472394",
+      "email": "surya.jsdev@gmail.com",
+      "group": "Friends",
+      "color": "#60a772",
+      "isFavorite": false,
+      "id": "M5TuqIB"
     }
   ]
 }
