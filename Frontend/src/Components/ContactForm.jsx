@@ -1,13 +1,19 @@
 
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useContacts } from "../hooks/useContacts";
+import {
+    addContact,
+    selectContacts,
+    updateContact,
+} from "../features/contacts/contactsSlice";
 import { useToast } from "../hooks/useToast";
 
 function ContactForm({editingContact}) 
 {
     const navigate = useNavigate();
-    const { contacts, addContact, updateContact } = useContacts();
+    const dispatch = useDispatch();
+    const contacts = useSelector(selectContacts);
     const showToast = useToast();
     const [submitError, setSubmitError] = useState("");
     const [validationErrors, setValidationErrors] = useState({});
@@ -18,7 +24,6 @@ function ContactForm({editingContact})
         group: editingContact?.group || editingContact?.Group || "Friends"
     }));
 
-    // Handle input changes
     const handleInput = (e) => {
         const { name, value } = e.target;
 
@@ -31,7 +36,7 @@ function ContactForm({editingContact})
             [name]: ""
         }));
     };
-    // validate form data
+
     const validateForm = () => {
         const errors = {};
         const name = formData.name.trim();
@@ -70,7 +75,7 @@ function ContactForm({editingContact})
 
         return errors;
     };
-    // Handle save and update
+
     const handleSave = async (e) => {
         e.preventDefault();
         setSubmitError("");
@@ -91,11 +96,11 @@ function ContactForm({editingContact})
         try {
             if (editingContact) {
                 const id = editingContact.id || editingContact._id;
-                await updateContact(id, contact);
+                await dispatch(updateContact({ id, contact })).unwrap();
                 showToast("Contact updated successfully.");
                 navigate(`/contact/${id}`);
             } else {
-                await addContact(contact);
+                await dispatch(addContact(contact)).unwrap();
                 showToast("Contact added successfully.");
                 navigate("/");
             }

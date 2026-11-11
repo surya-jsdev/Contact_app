@@ -1,13 +1,18 @@
 import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ContactForm from "../Components/ContactForm";
-import { useContacts } from "../hooks/useContacts";
+import {
+  selectContactById,
+  selectContactError,
+  selectContactStatus,
+} from "../features/contacts/contactsSlice";
 
 function EditContact() {
   const { id } = useParams();
-  const { contacts, loading, error } = useContacts();
-  const contact = contacts.find(
-    (item) => String(item.id ?? item._id) === String(id)
-  );
+  const contact = useSelector((state) => selectContactById(state, id));
+  const status = useSelector(selectContactStatus);
+  const error = useSelector(selectContactError);
+  const loading = status === "idle" || status === "loading";
 
   if (loading) {
     return <p className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] justify-items-start gap-3">Loading contact...</p>;
