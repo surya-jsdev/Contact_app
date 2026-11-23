@@ -1,24 +1,32 @@
 import { Mail, Pencil, PhoneIcon, Star, Trash } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import {
   deleteContact,
   selectContacts,
   selectFavourites,
   toggleFavourite,
 } from "../features/contacts/contactsSlice";
+import type { Contact } from "../Api/contact";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
-function ConatactCard({ favoritesOnly = false }) {
+interface ConatactCardProps {
+  favoritesOnly?: boolean;
+}
+
+function ConatactCard({ favoritesOnly = false }: ConatactCardProps) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const contacts = useSelector(favoritesOnly ? selectFavourites : selectContacts);
+  const dispatch = useAppDispatch();
+  const contacts = useAppSelector(favoritesOnly ? selectFavourites : selectContacts);
   const displayedContacts = contacts.filter(
     (contact) =>
       (contact.isFavorite === true || contact.isFavorite === "true") ===
       favoritesOnly
   );
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: string | undefined) => {
+    if (!id) {
+      return;
+    }
     try {
       await dispatch(deleteContact(id)).unwrap();
     } catch (error) {
@@ -26,7 +34,7 @@ function ConatactCard({ favoritesOnly = false }) {
     }
   };
 
-  const handleToggleFavourite = async (contact) => {
+  const handleToggleFavourite = async (contact: Contact) => {
     try {
       await dispatch(toggleFavourite(contact)).unwrap();
     } catch (error) {

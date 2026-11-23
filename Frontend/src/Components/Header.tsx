@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import type { Contact } from "../Api/contact";
 
-function Header({ Data }) {
+interface HeaderProps {
+  Data: Contact[];
+}
+
+function Header({ Data }: HeaderProps) {
   return (
     <header className="flex items-center justify-between bg-[#2861e8] px-[4%] py-[14px] text-white max-[480px]:gap-3 max-[480px]:px-[5%]">
       <Link to="/" className="text-inherit no-underline">

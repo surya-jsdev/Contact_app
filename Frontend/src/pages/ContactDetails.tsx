@@ -1,24 +1,31 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import {
   deleteContact,
   selectContactById,
   selectContactError,
   selectContactStatus,
 } from "../features/contacts/contactsSlice";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 function ContactDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const contact = useSelector((state) => selectContactById(state, id));
-  const status = useSelector(selectContactStatus);
-  const error = useSelector(selectContactError);
+  const dispatch = useAppDispatch();
+  const contact = useAppSelector((state) => selectContactById(state, id));
+  const status = useAppSelector(selectContactStatus);
+  const error = useAppSelector(selectContactError);
   const loading = status === "idle" || status === "loading";
 
   const handleDelete = async () => {
+    if (!contact) {
+      return;
+    }
+    const contactId = contact.id ?? contact._id;
+    if (!contactId) {
+      return;
+    }
     try {
-      await dispatch(deleteContact(contact.id ?? contact._id)).unwrap();
+      await dispatch(deleteContact(contactId)).unwrap();
       navigate("/");
     } catch (deleteError) {
       console.error("Error deleting contact:", deleteError);

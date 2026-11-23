@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import ToastContext from "./ToastContextValue";
 
-export function ToastProvider({ children }) {
-  const [toast, setToast] = useState(null);
+interface ToastProviderProps {
+  children: ReactNode;
+}
 
-  const showToast = (message) => {
+export function ToastProvider({ children }: ToastProviderProps) {
+  const [toast, setToast] = useState<{ message: string } | null>(null);
+
+  const showToast = (message: string) => {
     setToast({ message });
   };
 

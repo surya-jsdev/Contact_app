@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { selectContactsBySearch } from "../features/contacts/contactsSlice";
 import useDebounce from "../hooks/useDebounce";
+import { useAppSelector } from "../store/hooks";
 
 function SearchBar() {
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search.trim().toLowerCase(), 400);
-  const searchValue = useSelector((state) =>
+  const searchValue = useAppSelector((state) =>
     selectContactsBySearch(state, debouncedSearch)
   );
 

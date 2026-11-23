@@ -1,17 +1,17 @@
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import ContactForm from "../Components/ContactForm";
 import {
   selectContactById,
   selectContactError,
   selectContactStatus,
 } from "../features/contacts/contactsSlice";
+import { useAppSelector } from "../store/hooks";
 
 function EditContact() {
   const { id } = useParams();
-  const contact = useSelector((state) => selectContactById(state, id));
-  const status = useSelector(selectContactStatus);
-  const error = useSelector(selectContactError);
+  const contact = useAppSelector((state) => selectContactById(state, id));
+  const status = useAppSelector(selectContactStatus);
+  const error = useAppSelector(selectContactError);
   const loading = status === "idle" || status === "loading";
 
   if (loading) {

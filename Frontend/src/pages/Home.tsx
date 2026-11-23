@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import ConatactCard from "../Components/ConatactCard";
 import Header from "../Components/Header";
 import SearchBar from "../Components/SearchBar";
@@ -8,12 +7,13 @@ import {
   selectContacts,
   selectFavourites,
 } from "../features/contacts/contactsSlice";
+import { useAppSelector } from "../store/hooks";
 
 function Home() {
-  const contacts = useSelector(selectContacts);
-  const favoriteContacts = useSelector(selectFavourites);
-  const status = useSelector(selectContactStatus);
-  const error = useSelector(selectContactError);
+  const contacts = useAppSelector(selectContacts);
+  const favoriteContacts = useAppSelector(selectFavourites);
+  const status = useAppSelector(selectContactStatus);
+  const error = useAppSelector(selectContactError);
   const loading = status === "idle" || status === "loading";
 
   return (

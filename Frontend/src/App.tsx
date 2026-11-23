@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastProvider } from "./context/ToastContext";
 import { fetchContacts } from "./features/contacts/contactsSlice";
@@ -8,9 +7,10 @@ import ContactDetails from "./pages/ContactDetails";
 import EditContact from "./pages/EditContact";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import { useAppDispatch } from "./store/hooks";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());

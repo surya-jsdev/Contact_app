@@ -1,6 +1,5 @@
 
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     addContact,
@@ -8,23 +7,38 @@ import {
     updateContact,
 } from "../features/contacts/contactsSlice";
 import { useToast } from "../hooks/useToast";
+import type { Contact, ContactInput } from "../Api/contact";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
-function ContactForm({editingContact}) 
+interface ContactFormProps {
+  editingContact?: Contact;
+}
+
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  group: string;
+}
+
+type ValidationErrors = Partial<Record<keyof FormData, string>>;
+
+function ContactForm({ editingContact }: ContactFormProps) 
 {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const contacts = useSelector(selectContacts);
+    const dispatch = useAppDispatch();
+    const contacts = useAppSelector(selectContacts);
     const showToast = useToast();
     const [submitError, setSubmitError] = useState("");
-    const [validationErrors, setValidationErrors] = useState({});
-    const [formData, setFormData] = useState(() => ({
+    const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
+    const [formData, setFormData] = useState<FormData>(() => ({
         name: editingContact?.name || "",
         phone: editingContact?.phone || editingContact?.Phone || "",
         email: editingContact?.email || editingContact?.Email || "",
         group: editingContact?.group || editingContact?.Group || "Friends"
     }));
 
-    const handleInput = (e) => {
+    const handleInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
 
         setFormData((prev) => ({
@@ -37,8 +51,8 @@ function ContactForm({editingContact})
         }));
     };
 
-    const validateForm = () => {
-        const errors = {};
+    const validateForm = (): ValidationErrors => {
+        const errors: ValidationErrors = {};
         const name = formData.name.trim();
         const phone = formData.phone.trim();
         const email = formData.email.trim();
@@ -76,7 +90,7 @@ function ContactForm({editingContact})
         return errors;
     };
 
-    const handleSave = async (e) => {
+    const handleSave = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSubmitError("");
         const errors = validateForm();
@@ -84,7 +98,7 @@ function ContactForm({editingContact})
         if (Object.keys(errors).length > 0) {
             return;
         }
-        const contact = {
+        const contact: ContactInput = {
             ...formData,
             name: formData.name.trim(),
             phone: formData.phone.trim(),
@@ -96,6 +110,9 @@ function ContactForm({editingContact})
         try {
             if (editingContact) {
                 const id = editingContact.id || editingContact._id;
+                if (!id) {
+                    throw new Error("Contact ID is missing");
+                }
                 await dispatch(updateContact({ id, contact })).unwrap();
                 showToast("Contact updated successfully.");
                 navigate(`/contact/${id}`);
@@ -114,7 +131,7 @@ function ContactForm({editingContact})
 
         } catch (error) {
             console.error("Contact save error:", error);
-            setSubmitError(error.message || "Failed to save contact.");
+            setSubmitError(error instanceof Error ? error.message : "Failed to save contact.");
         }
     };
 

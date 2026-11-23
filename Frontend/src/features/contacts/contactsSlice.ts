@@ -4,26 +4,41 @@ import {
   deleteContact as removeContact,
   getContacts,
   updateContact as saveContact,
+  type Contact,
+  type ContactInput,
 } from "../../Api/contact";
 
+interface ContactsState {
+  items: Contact[];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+}
 
-// createAsyncThunk
-export const fetchContacts = createAsyncThunk(
+interface ContactsRootState {
+  contacts: ContactsState;
+}
+
+interface UpdateContactArgs {
+  id: string;
+  contact: ContactInput;
+}
+
+export const fetchContacts = createAsyncThunk<Contact[]>(
   "contacts/fetchContacts",
   async () => getContacts()
 );
 
-export const addContact = createAsyncThunk(
+export const addContact = createAsyncThunk<Contact, ContactInput>(
   "contacts/addContact",
   async (contact) => createContact(contact)
 );
 
-export const updateContact = createAsyncThunk(
+export const updateContact = createAsyncThunk<Contact, UpdateContactArgs>(
   "contacts/updateContact",
   async ({ id, contact }) => saveContact(id, contact)
 );
 
-export const deleteContact = createAsyncThunk(
+export const deleteContact = createAsyncThunk<string, string>(
   "contacts/deleteContact",
   async (id) => {
     await removeContact(id);
@@ -31,25 +46,25 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const toggleFavourite = createAsyncThunk(
+export const toggleFavourite = createAsyncThunk<Contact, Contact>(
   "contacts/toggleFavourite",
   async (contact) => {
     const id = contact.id || contact._id;
+    if (!id) {
+      throw new Error("Contact ID is missing");
+    }
     const isFavourite = contact.isFavorite === true || contact.isFavorite === "true";
     return saveContact(id, { ...contact, isFavorite: !isFavourite });
   }
 );
 
-
-// Slice Creation
-const initialState = {
+const initialState: ContactsState = {
   items: [],
   status: "idle",
   error: null,
 };
 
-const getContactId = (contact) => String(contact.id || contact._id);
-
+const getContactId = (contact: Contact): string => String(contact.id || contact._id);
 const contactsSlice = createSlice({
   name: "contacts",
   initialState,
@@ -66,7 +81,7 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = action.error.message ?? "Failed to fetch contacts";
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.items.push(action.payload);
@@ -92,22 +107,22 @@ const contactsSlice = createSlice({
         );
         state.error = null;
       })
-      .addMatcher(
-        (action) =>
-          [addContact, updateContact, deleteContact, toggleFavourite].some(
-            (thunk) => thunk.rejected.match(action)
-          ),
-        (state, action) => {
-          state.error = action.error.message;
-        }
-      );
+      .addCase(addContact.rejected, (state, action) => {
+        state.error = action.error.message ?? "Failed to add contact";
+      })
+      .addCase(updateContact.rejected, (state, action) => {
+        state.error = action.error.message ?? "Failed to update contact";
+      })
+      .addCase(deleteContact.rejected, (state, action) => {
+        state.error = action.error.message ?? "Failed to delete contact";
+      })
+      .addCase(toggleFavourite.rejected, (state, action) => {
+        state.error = action.error.message ?? "Failed to update favourite";
+      });
   },
 });
 
-
-// CreateSelector
-const selectContactsState = (state) => state.contacts;
-
+const selectContactsState = (state: ContactsRootState) => state.contacts;
 export const selectContacts = createSelector(
   [selectContactsState],
   (contactsState) => contactsState.items
@@ -129,13 +144,13 @@ export const selectFavourites = createSelector([selectContacts], (contacts) =>
   )
 );
 
-export const selectContactById = (state, id) =>
+export const selectContactById = (state: ContactsRootState, id?: string) =>
   selectContacts(state).find(
     (contact) => String(contact.id || contact._id) === String(id)
   );
 
 export const selectContactsBySearch = createSelector(
-  [selectContacts, (_state, searchTerm) => searchTerm],
+  [selectContacts, (_state: ContactsRootState, searchTerm: string) => searchTerm],
   (contacts, searchTerm) => {
     const search = String(searchTerm || "").trim().toLowerCase();
     if (!search) {
