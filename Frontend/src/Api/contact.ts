@@ -15,7 +15,7 @@ export interface Contact {
   color?: string;
   isFavorite?: boolean | string;
 }
-
+// omit id
 export type ContactInput = Omit<Contact, "id" | "_id">;
 
 function getErrorMessage(error: unknown): string {
