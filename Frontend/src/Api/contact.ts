@@ -1,6 +1,7 @@
 
 
-const API_URL = `${import.meta.env.VITE_API_URL}`;
+const configuredApiUrl = `${import.meta.env.VITE_API_URL}`.replace(/\/+$/, "");
+const API_URL = `${configuredApiUrl.replace(/(?:\/contacts)+$/i, "")}/contacts`;
 // interface
 export interface Contact {
   id?: string;
@@ -19,7 +20,7 @@ export interface Contact {
 export type ContactInput = Omit<Contact, "id" | "_id">;
 
 function getErrorMessage(error: unknown): string {
-  return  "Unknown error";
+  return error instanceof Error ? error.message : `Unknown error: ${String(error)}`;
 }
 
 // Get ContactList
@@ -28,7 +29,7 @@ export const getContacts = async (): Promise<Contact[]> => {
     try {
         const response = await fetch(API_URL);
         if (!response.ok) {
-            throw new Error("Failed to get contacts");
+            throw new Error(`Failed to get contacts: ${response.status} ${response.statusText}`);
         }
         return await response.json() as Contact[];
 
