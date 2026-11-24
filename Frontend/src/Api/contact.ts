@@ -53,7 +53,6 @@ export const getContactById = async (id: string): Promise<Contact> => {
 };
 
 // Post Contact
-
 export const addContact = async (contact: ContactInput): Promise<Contact> => {
     try {
         const response = await fetch(API_URL, {
@@ -98,7 +97,7 @@ export const updateContact = async (id: string, contact: ContactInput): Promise<
     }
 };
 
-// DELETE Contact
+// DELETE Contact by id
 
 export const deleteContact = async (id: string): Promise<boolean> => {
     try {
