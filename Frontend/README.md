@@ -1,30 +1,108 @@
-# React + Vite
+# Contact App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React contact manager for adding, searching, viewing, editing, deleting, and favouriting contacts.
 
-## Running the app
+## 🔗 Live Link
 
-Install dependencies with `npm install`, then start the contacts API and the frontend in separate terminals from this directory:
+[Open the app locally](http://localhost:5173/)
+
+> Run the frontend and JSON server using the steps below. Add a deployed URL here once the app is hosted.
+
+## Screenshots
+
+### Desktop
+
+![Contact list desktop view](./screenshots/desktop-home.png)
+
+![Add contact desktop view](./screenshots/desktop-add.png)
+
+### Mobile
+
+![Contact list mobile view](./screenshots/mobile-home.png)
+
+## Features
+
+- Add, edit, view, and delete contacts
+- Mark contacts as favourites
+- Search contacts by name or phone number
+- Group contacts into Friends, Family, or Work
+- Validate names, 10-digit phone numbers, emails, duplicates, and required fields
+- View loading and error states
+- Show toast notifications after successful actions
+- Responsive desktop and mobile layouts
+
+## Tech Stack
+
+- React - UI library
+- TypeScript - Type-safe application development
+- Redux Toolkit - Contact state and async request management
+- React Router- Page and contact-detail routing
+- Tailwind CSS- Responsive styling
+- Vite - Frontend build tool
+- JSON Server - Local REST API using `db.json`
+- Lucide React - Icons
+
+## API
+
+The frontend uses a REST API served by JSON Server:
+
+- Base URL: `http://localhost:3001/contacts`
+- Data file: `db.json`
+- Supported operations: list, create, update, toggle favourite, and delete
+
+Create a `.env` file in the `Frontend` directory:
+
+```env
+VITE_API_URL="http://localhost:3001/contacts"
+```
+
+## Run Locally
+
+From the repository root:
+
+```sh
+cd Frontend
+npm install
+```
+
+Start JSON Server in one terminal:
 
 ```sh
 npm run server
 ```
 
+Start the Vite frontend in a second terminal:
+
 ```sh
 npm run dev
 ```
 
-The API serves and stores contacts in `db.json` at `http://localhost:3000/contacts`.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-Currently, two official plugins are available:
+To create a production build:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm run build
+```
 
-## React Compiler
+## What I Learned
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Phase 1: Project Setup
 
-## Expanding the ESLint configuration
+Learned how to set up a Vite React and TypeScript project, organize reusable components, and use environment variables for the API URL.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Phase 2: UI and Responsive Design
+
+Learned how to build responsive layouts with Tailwind CSS and create consistent cards, forms, navigation, loading states, and mobile-friendly pages.
+
+### Phase 3: State Management
+
+Learned how Redux Toolkit slices, selectors, async thunks, and typed hooks can manage contact data and API operation states in one predictable store.
+
+### Phase 4: Routing and CRUD
+
+Learned how React Router handles list, add, detail, edit, and not-found pages, and how to connect those views to create, read, update, and delete operations.
+
+### Phase 5: Validation and User Experience
+
+Learned how to validate form input, prevent duplicate phone numbers, debounce search, handle API errors, and provide users with clear toast feedback.
