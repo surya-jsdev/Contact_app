@@ -37,7 +37,7 @@ export const getContacts = async (): Promise<Contact[]> => {
         throw error;
     }
 };
-
+// get by Id
 export const getContactById = async (id: string): Promise<Contact> => {
     try {
         const response = await fetch(`${API_URL}/${id}`);
