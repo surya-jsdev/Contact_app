@@ -1,7 +1,7 @@
 
 
 const API_URL = `${import.meta.env.VITE_API_URL}/contacts`;
-
+// interface
 export interface Contact {
   id?: string;
   _id?:  string;
