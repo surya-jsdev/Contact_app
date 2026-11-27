@@ -2,7 +2,8 @@
 
 const configuredApiUrl = `${import.meta.env.VITE_API_URL}`.replace(/\/+$/, "");
 const API_URL = `${configuredApiUrl.replace(/(?:\/contacts)+$/i, "")}/contacts`;
-// interface
+
+//Create interface
 export interface Contact {
   id?: string;
   _id?:  string;
@@ -16,7 +17,7 @@ export interface Contact {
   color?: string;
   isFavorite?: boolean | string;
 }
-// omit id
+// omit id Only
 export type ContactInput = Omit<Contact, "id" | "_id">;
 
 function getErrorMessage(error: unknown): string {

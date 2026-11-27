@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { selectContactsBySearch } from "../features/contacts/contactsSlice";
-import useDebounce from "../hooks/useDebounce";
+import useDebounce from "../customhooks/useDebounce";
 import { useAppSelector } from "../store/hooks";
 
 function SearchBar() {
