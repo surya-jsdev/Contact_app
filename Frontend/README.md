@@ -3,8 +3,8 @@
 A responsive React contact manager for adding, searching, viewing, editing, deleting, and favouriting contacts.
 
 ## 🔗 Live Link
-https://contact-app-1-1oo8.onrender.com
 
+[Open the app locally](http://localhost:5173/)
 
 > Run the frontend and JSON server using the steps below. Add a deployed URL here once the app is hosted.
 
@@ -12,13 +12,13 @@ https://contact-app-1-1oo8.onrender.com
 
 ### Desktop
 
-![Contact list desktop view](./screenshots/AddContact_DesktopView.png)
+![Contact list desktop view](./screenshots/desktop-home.png)
 
-![Add contact desktop view](./screenshots/Contactbook_Desktop%20View.png)
+![Add contact desktop view](./screenshots/desktop-add.png)
 
 ### Mobile
 
-![Contact list mobile view](./screenshots/Mobile_View.png)
+![Contact list mobile view](./screenshots/mobile-home.png)
 
 ## Features
 
@@ -40,24 +40,23 @@ https://contact-app-1-1oo8.onrender.com
 - Tailwind CSS- Responsive styling
 - Vite - Frontend build tool
 - JSON Server - Local REST API using `db.json`
-- Lucide React - Icons
+
 
 ## API
 
 The frontend uses a REST API served by JSON Server:
 
-- Base URL: `http://localhost:3001/contacts`
+- Base URL: `https://contact-app-yh8z.onrender.com/contacts`
 - Data file: `db.json`
 - Supported operations: list, create, update, toggle favourite, and delete
 
 Create a `.env` file in the `Frontend` directory:
 
 ```env
-VITE_API_URL="http://localhost:3001/contacts"
+VITE_API_URL=https://contact-app-yh8z.onrender.com/contacts
 ```
 
 ## Run Locally
-
 From the repository root:
 
 ```sh

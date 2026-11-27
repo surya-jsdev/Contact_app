@@ -6,7 +6,7 @@ import {
     selectContacts,
     updateContact,
 } from "../features/contacts/contactsSlice";
-import { useToast } from "../hooks/useToast";
+import { useToast } from "../customhooks/useToast";
 import type { Contact, ContactInput } from "../Api/contact";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
@@ -155,7 +155,6 @@ function ContactForm({ editingContact }: ContactFormProps)
                             name="name"
                             value={formData.name}
                             onChange={handleInput}
-
                             minLength={2}
 
                         />
