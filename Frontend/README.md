@@ -3,8 +3,8 @@
 A responsive React contact manager for adding, searching, viewing, editing, deleting, and favouriting contacts.
 
 ## 🔗 Live Link
+https://contact-app-1-1oo8.onrender.com
 
-[Open the app locally](http://localhost:5173/)
 
 > Run the frontend and JSON server using the steps below. Add a deployed URL here once the app is hosted.
 
@@ -12,13 +12,13 @@ A responsive React contact manager for adding, searching, viewing, editing, dele
 
 ### Desktop
 
-![Contact list desktop view](./screenshots/desktop-home.png)
+![Contact list desktop view](./screenshots/AddContact_DesktopView.png)
 
-![Add contact desktop view](./screenshots/desktop-add.png)
+![Add contact desktop view](./screenshots/Contactbook_Desktop%20View.png)
 
 ### Mobile
 
-![Contact list mobile view](./screenshots/mobile-home.png)
+![Contact list mobile view](./screenshots/Mobile_View.png)
 
 ## Features
 
