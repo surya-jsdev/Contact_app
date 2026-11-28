@@ -1,7 +1,7 @@
 
 
-const configuredApiUrl = `${import.meta.env.VITE_API_URL}`.replace(/\/+$/, "");
-const API_URL = `${configuredApiUrl.replace(/(?:\/contacts)+$/i, "")}/contacts`;
+
+const API_URL = import.meta.env.VITE_API_URL 
 
 //Create interface
 export interface Contact {
