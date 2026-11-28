@@ -33,12 +33,12 @@ function ContactDetails() {
   };
 
   if (loading) {
-    return <p className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] justify-items-start gap-3">Loading contact...</p>;
+    return <p className="mx-auto my-8 w-[min(520px,calc(100%-32px))]">Loading contact...</p>;
   }
 
   if (error && !contact) {
     return (
-      <main className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] justify-items-start gap-3" role="alert">
+      <main className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] gap-3" role="alert">
         <p>{error}</p>
       </main>
     );
@@ -46,7 +46,7 @@ function ContactDetails() {
 
   if (!contact) {
     return (
-      <main className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] justify-items-start gap-3">
+      <main className="mx-auto my-8 grid w-[min(520px,calc(100%-32px))] gap-3">
         <p>Contact not found.</p>
        
       </main>
@@ -54,49 +54,49 @@ function ContactDetails() {
   }
 
   return (
-    <main className="mx-auto my-6 w-[500px]">
+    <main className="mx-auto my-6 w-[min(500px,calc(100%-32px))]">
      
-      <section className="rounded-xl border border-[#e0e7f1] bg-white p-[22px] shadow-[0_2px_8px_rgb(23_36_59_/_5%)]">
-        <h1 className="mb-[18px] text-xl">Contact Details</h1>
-        <dl className="grid gap-[14px]">
+      <section className="rounded-xl border border-[#e0e7f1] bg-white p-5.5 shadow-[0_2px_8px_rgb(23_36_59_/_5%)]">
+        <h1 className="mb-4.5 text-xl">Contact Details</h1>
+        <dl className="grid gap-3.5">
           <div>
             <dt className="text-[0.8rem] text-[#59677d]">Name</dt>
-            <dd className="mt-[3px]">{contact.name}</dd>
+            <dd className="mt-0.75">{contact.name}</dd>
           </div>
           <div>
             <dt className="text-[0.8rem] text-[#59677d]">Email</dt>
-            <dd className="mt-[3px]">{contact.email || contact.Email || "Not provided"}</dd>
+            <dd className="mt-0.75">{contact.email || contact.Email || "Not provided"}</dd>
           </div>
           <div>
             <dt className="text-[0.8rem] text-[#59677d]">Phone</dt>
-            <dd className="mt-[3px]">{contact.phone || contact.Phone || "Not provided"}</dd>
+            <dd className="mt-0.75">{contact.phone || contact.Phone || "Not provided"}</dd>
           </div>
           <div>
             <dt className="text-[0.8rem] text-[#59677d]">Group</dt>
-            <dd className="mt-[3px]">{contact.group || contact.Group || "Not provided"}</dd>
+            <dd className="mt-0.75">{contact.group || contact.Group || "Not provided"}</dd>
           </div>
         </dl>
      
         {error && <p role="alert">{error}</p>}
 
-        <div className="mt-[22px] flex gap-[10px]">
-          <Link className="inline-flex min-h-[34px] items-center justify-center rounded-[5px] border-0 bg-[#2861e8] p-[6px] text-white no-underline" to={`/edit/${id}`}>
+        <div className="mt-5.5 flex flex-wrap gap-2.5">
+          <Link className="inline-flex min-h-3.5 items-center justify-center rounded-[5px] border-0 bg-[#2861e8] p-1.5 text-white no-underline" to={`/edit/${id}`}>
             Edit Contact
           </Link>
           <button
-            className="inline-flex min-h-[34px] cursor-pointer items-center justify-center rounded-[5px] border-0 bg-[#c62828] p-[6px] text-white"
+            className="inline-flex min-h-3.5 cursor-pointer items-center justify-center rounded-[5px] border-0 bg-[#c62828] p-1.5 text-white"
             type="button"
             onClick={handleDelete}
           >
             Delete Contact
           </button>
-          <button className="inline-flex min-h-[34px] cursor-pointer items-center justify-center rounded-[5px] border-0 bg-[#2861e8] p-[6px] text-white">
-             <Link to="/">Back to contacts</Link>
-          </button>
+          <Link className="inline-flex min-h-8.5 items-center justify-center rounded-[5px] bg-[#2861e8] px-2 py-1.5 text-white no-underline" to="/">
+            Back to contacts
+          </Link>
         </div>
       </section>
     </main>
   );
 }
 
-export default ContactDetails;
+export default ContactDetails; 

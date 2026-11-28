@@ -81,7 +81,7 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message ?? "Failed to fetch contacts";
+        state.error = action.error.message || "Failed to fetch contacts";
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.items.push(action.payload);
@@ -108,16 +108,16 @@ const contactsSlice = createSlice({
         state.error = null;
       })
       .addCase(addContact.rejected, (state, action) => {
-        state.error = action.error.message ?? "Failed to add contact";
+        state.error = action.error.message || "Failed to add contact";
       })
       .addCase(updateContact.rejected, (state, action) => {
-        state.error = action.error.message ?? "Failed to update contact";
+        state.error = action.error.message || "Failed to update contact";
       })
       .addCase(deleteContact.rejected, (state, action) => {
-        state.error = action.error.message ?? "Failed to delete contact";
+        state.error = action.error.message || "Failed to delete contact";
       })
       .addCase(toggleFavourite.rejected, (state, action) => {
-        state.error = action.error.message ?? "Failed to update favourite";
+        state.error = action.error.message || "Failed to update favourite";
       });
   },
 });

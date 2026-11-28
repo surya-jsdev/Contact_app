@@ -21,7 +21,7 @@ function Home() {
       <Header Data={contacts} />
 
       <main className="mx-auto my-5 flex w-[min(1216px,calc(100%-48px))] justify-center gap-5.5 max-[700px]:w-[min(520px,calc(100%-32px))] max-[480px]:my-4">
-        <section className="flex w-[700px] flex-col gap-[18px]">
+        <section className="flex w-full max-w-[700px] flex-col gap-[18px]">
 
           <SearchBar />
 

@@ -4,13 +4,14 @@ import { ArrowLeft } from "lucide-react";
 
 function AddContact() {
   return (
-    <main className="flex h-dvh items-center justify-center rounded-xl border border-[#e0e7f1] bg-white p-[18px_16px] shadow-[0_2px_8px_rgb(23_36_59_/_5%)]">
-      <section className="mx-auto my-6 w-[500px]">
-        <button className="mb-[14px] inline-flex min-h-[34px] items-center justify-center rounded-[5px] border-0 bg-[#2861e8] p-1 text-[#2455c7]">
-          <Link to="/" className="mt-px flex text-white no-underline">
-          <ArrowLeft size={18} style={{marginRight:'4px'}}/>Back to contacts
-          </Link>
-        </button>
+    <main className="flex min-h-dvh items-start justify-center px-4 py-6">
+      <section className="mx-auto w-full max-w-125 ">
+        <Link
+          to="/"
+          className="mb-3.5 inline-flex min-h-8.5 items-center justify-center gap-1 rounded-[5px] bg-[#2861e8] px-2 py-1.5 text-white no-underline"
+        >
+          <ArrowLeft size={18} />Back to contacts
+        </Link>
         {/* ConatctForm Component */}
         <ContactForm />
       </section>

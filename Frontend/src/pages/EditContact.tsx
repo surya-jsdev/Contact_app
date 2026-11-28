@@ -37,8 +37,8 @@ function EditContact() {
   }
 
   return (
-    <main className="mx-auto my-6 w-[500px]">
-      <Link className="mb-[14px] inline-block text-[#2455c7]" to={`/contact/${id}`}>Back to contact</Link>
+    <main className="mx-auto my-6 w-[min-500px]">
+      <Link className="mb-3.5 inline-block text-[#2455c7]" to={`/contact/${id}`}>Back to contact</Link>
       <ContactForm editingContact={contact} />
     </main>
   );
