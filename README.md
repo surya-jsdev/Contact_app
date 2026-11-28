@@ -11,13 +11,13 @@ https://contact-app-1-1oo8.onrender.com
 
 ## Screenshots
 
-### Desktop
+### Desktop View
 
 ![Contact list desktop view](./screenshots/Contactbook_Desktop%20View.png)
 
 ![Add contact desktop view](./screenshots/AddContact_DesktopView.png)
 
-### Mobile
+### Mobile view
 
 ![Contact list mobile view](./screenshots/Mobile_View.png)
 
